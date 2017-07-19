@@ -1450,7 +1450,11 @@ exports.search = function (req, res, next) {
 
   // validate the query string
   if (req.query.search.length < 3) {
-    return res.status(400).end();
+    var errorMessage = errorHandler.getErrorMessageByKey('bad-request');
+    return res.status(400).send({
+      message: errorMessage,
+      detail: 'Query string should be at least 3 characters long.'
+    });
   }
 
 
@@ -1475,7 +1479,6 @@ exports.search = function (req, res, next) {
     ] })
     // select only the right profile properties
     .select(exports.userMiniProfileFields + ' -_id')
-    // todo what to choose for sorting?
     .sort({ username: 1 })
     // limit the amount of found users (config)
     .limit(config.limits.userSearchLimit)
