@@ -1,7 +1,8 @@
 'use strict';
 
 import { CreateReference } from '../../client/components/CreateReference.component';
-import { ReferenceToSelfInfo, LoadingInfo, DuplicateInfo, SubmittedInfo } from '../../client/components/create-reference/Info';
+import { ReferenceToSelfInfo, DuplicateInfo, SubmittedInfo } from '../../client/components/create-reference/Info';
+import Loading from '@/modules/core/client/components/Loading';
 import Interaction from '../../client/components/create-reference/Interaction';
 import Navigation from '../../client/components/create-reference/Navigation';
 import Enzyme from 'enzyme';
@@ -51,7 +52,7 @@ Enzyme.configure({ adapter: new Adapter() });
       expect(stub.callCount).toBe(0);
       const wrapper = shallow(<CreateReference userFrom={userFrom} userTo={userTo} t={t} />);
       expect(stub.callCount).toBe(1);
-      expect(wrapper.find(LoadingInfo)).toExist();
+      expect(wrapper.find(Loading)).toExist();
     });
 
     it('can not leave a second reference', async () => {
