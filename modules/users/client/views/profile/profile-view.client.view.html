@@ -67,6 +67,15 @@
           <span class="badge" ng-bind="profileCtrl.contacts.length"></span>
         </a>
       </li>
+      <li
+        ui-sref-active="active"
+        role="presentation"
+        ng-if="app.appSettings.referencesEnabled"
+      >
+        <a ui-sref="profile.references" role="tab">
+          References
+        </a>
+      </li>
     </ul>
   </div>
 </nav>
@@ -236,12 +245,14 @@
                 >
                   <a ui-sref="profile.references.list" role="tab">
                     <span aria-hidden="true">References</span>
+                    <!-- not implemented
                     <span class="badge"
                           aria-hidden="true"
                           ng-bind="profileCtrl.referencesCount || 0"></span>
                     <span class="sr-only">
                       {{profileCtrl.referencesCount || 0}} References
                     </span>
+                    -->
                   </a>
                 </li>
               </ul>
