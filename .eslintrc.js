@@ -191,6 +191,7 @@ module.exports = {
       'modules/**/client/components/**',
       'modules/**/client/api/**',
       'modules/**/client/utils/**',
+      'modules/**/offers/components/**',
       'modules/core/client/directives/tr-boards.client.directive.js',
       'modules/core/client/services/photos.service.js',
       'modules/references/tests/client/**'
