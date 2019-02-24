@@ -45,5 +45,6 @@ module.exports = {
       auth: false,
       pool: true
     }
-  }
+  },
+  i18nBackend: true
 };

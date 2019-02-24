@@ -185,5 +185,6 @@ module.exports = {
       program: 'production',
       inlineMeta: true
     }
-  }
+  },
+  i18nBackend: false
 };

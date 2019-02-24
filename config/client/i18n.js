@@ -46,14 +46,14 @@ function format(value, format, languageCode) {
 }
 
 i18n
-  // load translation using xhr -> see /public/locales
-  // learn more: https://github.com/i18next/i18next-xhr-backend
-  .use(Backend)
   // detect user language
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
   .use(LanguageDetector)
   // pass the i18n instance to react-i18next.
   .use(initReactI18next)
+  // load translation using xhr -> see /public/locales
+  // learn more: https://github.com/i18next/i18next-xhr-backend
+  .use(Backend)
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
@@ -61,7 +61,9 @@ i18n
     // allow keys to be phrases having `:`, `.`
     nsSeparator: false,
     keySeparator: false, // we do not use keys in form messages.welcome
-    // saveMissing: true, // @TODO send not translated keys to endpoint
+    saveMissing: true, // @TODO send not translated keys to endpoint
+    saveMissingTo: 'current',
+    returnEmptyString: false,
     interpolation: {
       escapeValue: false, // react already safes from xss
       format
@@ -73,9 +75,12 @@ i18n
     },
     react: {
       useSuspense: false
-    }
-    // saveMissingPlurals: true,
-    // debug: true // show missing translation keys in console.log
+    },
+    backend: {
+      addPath: '/api/locales/{{lng}}/{{ns}}'
+    },
+    saveMissingPlurals: true,
+    debug: true // show missing translation keys in console.log
   });
 
 export default i18n;
