@@ -194,7 +194,8 @@ module.exports = {
       'modules/**/offers/components/**',
       'modules/core/client/directives/tr-boards.client.directive.js',
       'modules/core/client/services/photos.service.js',
-      'modules/references/tests/client/**'
+      'modules/references/tests/client/**',
+      'modules/utils/**',
     ],
     parserOptions: {
       ecmaVersion: 2018,
